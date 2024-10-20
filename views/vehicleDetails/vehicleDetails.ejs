@@ -1,0 +1,11 @@
+<div id="vehicle_details">
+    <% if (title) { %>
+      <h1 id="vehicle_header"><%= title %></h1>
+      <% } else {
+          res.redirect('/')
+    } %>
+   
+    <%# messages() %>
+   
+    <%- content %>
+  </div>
