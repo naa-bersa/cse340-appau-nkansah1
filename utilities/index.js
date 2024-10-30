@@ -86,12 +86,12 @@ Util.buildVehicleDetails = async function(vehicle) {
   // Format the price as currency
   let vehiclePrice = new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'USD', // You can change this to your desired currency code
+      currency: 'USD', // I can change this to my desired currency code
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
   }).format(vehicle.inv_price);
  
-  // If mileage needs to be formatted, you can do that here
+  // If mileage needs to be formatted, I can do that here
   let mileage = new Intl.NumberFormat('en-US').format(vehicle.inv_miles);
  
   let content;

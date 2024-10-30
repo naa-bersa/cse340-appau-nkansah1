@@ -328,7 +328,90 @@ body{
    }
 
 
+/* Flash message styles */
+.flash-message {
+  color: red; /* Red color for error messages */
+  margin-bottom: 15px; /* Space below the message */
+  text-align: center; /* Center the message */
+}
 
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column; /* Stack the form elements vertically */
+  background-color: rgb(31, 83, 83);
+  border: #000000;
+  margin: 20px;
+}
+
+label {
+  margin-bottom: 5px; 
+  font-size: 17px; 
+  text-align: left; 
+  margin-left: 15px;
+  margin-top: 20px;
+  color: aliceblue;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"]
+ {
+  padding: 8px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; /* Slightly rounded corners */
+  font-size: 14px; /* Smaller font size for inputs */
+  width: 200px; 
+  max-width: 100%; /* Ensure it doesn't exceed the container */
+  margin-left: 15px;
+
+}
+
+button {
+  padding: 8px 12px; /* Smaller padding for the button */
+  background-color: #28a745; /* Green background for the button */
+  color: white; /* White text on button */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 14px; /* Smaller font size for button */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  width: 200px; /* Set specific width for button */
+  margin-top: 10px; /* Space above the button */
+  margin-bottom: 8.9px;
+  /* padding-right: 7px; */
+  margin-left: 15px;
+}
+
+button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.sign{
+    text-align: left; /* left the paragraph */
+    margin-top: 15px; /* Space above the paragraph */
+    margin-left: 15px;
+    color: #f4f4f4;
+    margin-bottom: 20px;
+}
+
+
+form div small {
+  display: block;
+  background-color: #204f4f; /* Slightly darker background color */
+  color: #f4f4f4;
+  padding: 10px 15px; /* Padding around the text */
+  margin: 10px 15px; /* Adds space around the element */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 13px;
+  line-height: 1.5; /* Adds spacing between lines for readability */
+  max-width: 400px; /* Limits width on larger screens */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.notice {
+  color: green;
+}
 
 
 
@@ -474,4 +557,34 @@ margin-left: 45px;
   margin-left: 45px;
   margin-top: 5px;
  }
+
+
+/* Form styles */
+label {
+  margin-bottom: 5px; /* Space between label and input */
+  font-size: 17px; /* Smaller font size for labels */
+  text-align: left; /* Align labels to the left */
+  margin-left: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 400px; /* Set specific width for input fields */
+}
+
+button {
+  font-size: 16px; /* Smaller font size for button */
+}
+
+button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.sign{
+    text-align: left; /* left the paragraph */
+    margin-left: 15px;
+    color: #f4f4f4;
+    margin-bottom: 10px;
+}
 }
