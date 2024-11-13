@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .vehicle_details{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        img{
+            max-width: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="vehicle_details">
+        <img src="https://placehold.co/600x400" alt="Image of ${vehicle.inv_make}">
+        
+        <div class="vehicleNumbers">
+          <h2>Price: $100</h2>
+          <h2>Mileage: 100000 miles</h2>
+  
+        <p id="vehicle_para"><span class="vehicle_specs">Color: </span>${vehicle.inv_color}</p>
+        <p id="vehicle_description">${vehicle.inv_description}</p>
+        </div>
+    </div>
+</body>
+</html>

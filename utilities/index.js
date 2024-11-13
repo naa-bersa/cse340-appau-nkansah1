@@ -97,13 +97,14 @@ Util.buildVehicleDetails = async function(vehicle) {
   let content;
   content = `<div class="vehicle_details">
       <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make}">
-      <h1>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h1>
+      
       <div class="vehicleNumbers">
         <h2>Price: ${vehiclePrice}</h2>
         <h2>Mileage: ${mileage} miles</h2>
-      </div>
+
       <p id="vehicle_para"><span class="vehicle_specs">Color: </span>${vehicle.inv_color}</p>
       <p id="vehicle_description">${vehicle.inv_description}</p>
+      </div>
   </div>`;
  
   return content;
@@ -117,5 +118,18 @@ Util.buildVehicleDetails = async function(vehicle) {
  ****************************************/
 Util.handleErrors = (fn) => (req, res, next) =>
   Promise.resolve(fn(req, res, next)).catch(next);
+
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+ }
 
 module.exports = Util;

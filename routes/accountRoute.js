@@ -15,6 +15,10 @@ const asyncHandler = (fn) => {
 };
 
 
+// Route to account management view
+router.get("/",  utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
+
+
 // Route to login
 router.get("/login", accountController.buildLogin);
 
@@ -29,7 +33,13 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 )
 
-
+// Process the login attempt
+router.post(
+  "/login",
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.loginAccount)
+)
 
 // Error-handling middleware
 router.use((err, req, res, next) => {

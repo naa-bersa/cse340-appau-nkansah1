@@ -172,7 +172,6 @@ body{
 }
 
 .upgrade-item { 
-  
   border-radius: 5px; 
   padding: 10px; 
   max-width: 200px; 
@@ -258,14 +257,17 @@ body{
   margin-top: 15px;
 }
 
-.vehicleNumbers{
+/* .vehicleNumbers{
   font-size: 15px;
   margin-top:10px;
+  } */
+  
+.vehicleNumbers h2{
+  margin-left: 45px;
+  font-weight: bold;
+  padding-top: 5px;
   }
   
-  .vehicleNumbers h2{
-  margin-left: 45px;
-  }
   
    /* #vehicle_details h1{
     font-size:20px;
@@ -282,50 +284,65 @@ body{
    } */
   
    #vehicle_details{
-    background-color: rgb(84, 88, 88);
+    /* background-color: rgb(84, 88, 88); */
     padding-bottom: 20px;
    }
 
    .vehicle_details h1{
     color: #f4f4f4;
+    text-align: center;
+    position: absolute;
+
    }
 
    #vehicle_details #vehicle_header{
-    color: rgb(255, 255, 255);
+    color: black;
     text-align: left;
    }
   
    .vehicle_details img{
-    /* margin-left: 47px; */
     width: 100%;
     height: auto;
-    margin-left: 10px;
+    margin-left: 30px;
     margin-top: 15px;
     padding-right: 20px;
    }
 
+   .vehicle_details{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+img{
+    max-width: 500px;
+    width: 100%;
+}
+
    .vehicleNumbers{
-    color: #3bdeed;
+    color: #000000;
     font-size:10px;
-    border: 3px solid #f4f4f4;
+    border: 3px solid #7e7c7c;
     padding:2px 5px 2px 0px;
     margin: 30px;
     text-align: left;
     max-width: fit-content;
+    box-shadow: 6px 9px 8px rgba(117 109 109 / 50%);
    }
   
    #vehicle_para{
     margin-left: 45px;
-    margin-top: 8px;
-    color: #f4f4f4;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #00f2ca;
    }
   
    #vehicle_description{
     margin-left: 45px;
     margin-top: 8px;
-    color: #f4f4f4;
-    
-   }
+    font-size: 12px;
+    font-weight: bold;
+    }
+   
 
 
 /* Flash message styles */
@@ -395,6 +412,10 @@ button:hover {
     margin-bottom: 20px;
 }
 
+.sign a{
+  color: #f4f4f4;
+}
+
 
 form div small {
   display: block;
@@ -411,7 +432,10 @@ form div small {
 
 .notice {
   color: green;
+  padding-left: 20px;
+  list-style-type: none;
 }
+
 
 
 
@@ -510,62 +534,42 @@ form div small {
   margin-top: 15px;
 }
 
-.vehicleNumbers{
+/* .vehicleNumbers{
 font-size: 10px;
 margin-top:10px;
-}
+} */
 
-.vehicleNumbers h2{
+/* .vehicleNumbers h2{
 margin-left: 45px;
-}
+} */
 
  #vehicle_details h1{
-  font-size:20px;
-  color: blue;
-  text-align: center;
-  position: absolute; /* Positions the text on top of the image */
-  top: 50%; /* Vertically aligns the text */
-  left: 50%; /* Horizontally aligns the text */
-  transform: translate(-50%, -50%); /* Perfect centering */
-  color: white; /* Text color */
-  font-size: 24px; /* Text size */
-  background-color: rgba(0, 0, 0, 0.5); /* Optional: Semi-transparent background */
   padding: 10px; /* Optional: Padding for spacing around the text */
 
  }
 
- #vehicle_details #vehicle_header{
-  color: black;
-  text-align: left;
- }
+ 
 
- .vehicle_details img{
-  /* margin-left: 47px; */
+ /* .vehicle_details img{
   width: 100%;
   height: auto;
   margin-left: 10px;
   margin-top: 15px;
   padding-right: 20px;
- }
+ } */
 
- #vehicle_para{
+ /* #vehicle_para{
   margin-left: 45px;
   margin-top: 5px;
- }
+ } */
 
- #vehicle_description{
+ /* #vehicle_description{
   margin-left: 45px;
   margin-top: 5px;
- }
+ } */
 
 
 /* Form styles */
-label {
-  margin-bottom: 5px; /* Space between label and input */
-  font-size: 17px; /* Smaller font size for labels */
-  text-align: left; /* Align labels to the left */
-  margin-left: 15px;
-}
 
 input[type="text"],
 input[type="email"],
