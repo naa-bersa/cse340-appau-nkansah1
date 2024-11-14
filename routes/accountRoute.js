@@ -7,6 +7,7 @@ const utilities = require('../utilities')
 
 
 
+
 // Higher-order function for handling errors in async route handlers
 const asyncHandler = (fn) => {
   return (req, res, next) => {
@@ -16,7 +17,7 @@ const asyncHandler = (fn) => {
 
 
 // Route to account management view
-router.get("/",  utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
+router.get("/management", utilities.checkLogin, asyncHandler(accountController.buildAccountManagement))
 
 
 // Route to login

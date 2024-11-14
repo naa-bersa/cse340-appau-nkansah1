@@ -1,10 +1,8 @@
 <title><%= title %></title>
 <h1><%= title %></h1>
 
-  <% if (messages && messages.notice) { %>
-    <p><%= messages.notice %></p>
-  <% } %>
+<% if (messages && messages.length) { %>
+  <p><%= messages[0] %></p>
+<% } %>
 
-
-<%- messages() %>
-<p>You're logged in </p>
+<p>You're logged in</p>

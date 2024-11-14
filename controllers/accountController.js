@@ -89,8 +89,6 @@ async function registerAccount(req, res) {
 async function loginAccount(req, res) {
   let nav = await utilities.getNav();
   const { account_email, account_password } = req.body;
-
-  try {
     // Retrieve the user account by email
     const accountData = await accountModel.findByEmail(account_email);
     console.log('Email found')
@@ -131,71 +129,55 @@ async function loginAccount(req, res) {
             maxAge: 3600 * 1000,
           });
         }
-        return res.redirect("/account/");
+        console.log("Redirecting to /account/");
+        return res.redirect("/account");
       }
-      else {
-        req.flash("notice", "Check your credentials")
-        res.status(400).render("account/login", {
-          title:"login",
-          nav,
-          errors: null,
-          account_email
-        }
-      )
-      }
+      // else {
+      //   req.flash("notice", "Check your credentials")
+      //   res.status(400).render("account/login", {
+      //     title:"login",
+      //     nav,
+      //     errors: null,
+      //     account_email
+      //   }
+      // )
+      // }
     } catch (error) {
-      return new Error("Access Forbidden");
+      return new Error("Access Forbidden")
     }
-
-    // Compare the provided password with the stored hashed password
-    const isPasswordValid = await bcrypt.compare(
-      account_password,
-      accountData.account_password
-    );
-
-    if (!isPasswordValid) {
-      req.flash("notice", "Invalid email or password.");
-      return res.status(401).render("account/login", {
-        title: "Login",
-        nav,
-        errors: null,
-        account_email,
-      });
-    }
-
-    // Successful login - create session or token and redirect
-    req.session.user = {
-      id: accountData.id,
-      firstname: user.account_firstname,
-      lastname: user.account_lastname,
-      email: user.account_email,
-    };
-
-    req.flash("notice", `Welcome back, ${user.account_firstname}!`);
-    res.status(200).redirect("account/management");
-  } catch (error) {
-    console.error("Error during login:", error);
-    req.flash("notice", "An error occurred during login. Please try again.");
-    res.status(500).render("account/login", {
-      title: "Login",
-      nav,
-      errors: null,
-      account_email,
-    });
-  }
+  
 }
 
 /* ****************************************
  *  Deliver Account Management view
  * *************************************** */
+// async function buildAccountManagement(req, res, next) {
+//   let nav = await utilities.getNav();
+//   let flashMessage = req.flash("notice") || [];
+//   res.render("account/management", {
+//     title: "Account Management",
+//     nav,
+//     flashMessage,
+//   });
+// }
 async function buildAccountManagement(req, res, next) {
-  let nav = await utilities.getNav();
-  let flashMessage = req.flash("notice") || [];
-  res.render("account/management", {
-    title: "Account Management",
-    nav,
-    flashMessage,
-  });
+  try {
+    // Fetch navigation items (if needed)
+    let nav = await utilities.getNav();
+    
+    // Get any flash messages
+    let flashMessage = req.flash("notice") || [];
+    
+    // Render the view, passing the data (including flash messages)
+    res.render("account", {
+      title: "Account Management",
+      nav,
+      messages: flashMessage,
+    });
+  } catch (err) {
+    // Handle any potential errors
+    next(err);
+  }
 }
 
 module.exports = {
