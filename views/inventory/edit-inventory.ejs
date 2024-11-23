@@ -1,0 +1,64 @@
+<title><%= title %></title>
+
+<h1><%= title %></h1>
+
+<% if (flashMessage) { %>
+  <p><%= flashMessage %></p>
+<% } %>
+
+<form action="/inv/update" method="POST" enctype="multipart/form-data">
+  <label for="classificationList">Classification:</label>
+  <%- classificationList %>
+
+  <label for="make">Make:</label>
+  <input type="text" id="make" name="make" value="<%= make %>" required />
+
+  <label for="model">Model:</label>
+  <input type="text" id="model" name="model" value="<%= model %>" required />
+
+  <label for="year">Year:</label>
+  <input type="number" id="year" name="year" value="<%= year %>" required />
+
+  <label for="color">Color:</label>
+  <input type="text" id="color" name="color" value="<%= color %>" required />
+
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" required><%= description %></textarea>
+
+  <label for="price">Price:</label>
+  <input type="number" step="0.01" id="price" name="price" value="<%= price %>" required />
+
+  <label for="miles">Miles:</label>
+  <input type="number" id="miles" name="miles" value="<%= miles %>" required />
+
+  <!-- Image File Input -->
+  <label for="image">Select Image:</label>
+  <input
+    type="file"
+    id="image"
+    name="image"
+    accept="image/*"
+    onchange="previewImage(event)"
+  />
+
+  <!-- Image Preview Section -->
+  <img
+    id="preview"
+    src="<%= imagePath || '/images/vehicles/no-image.png' %>"
+    alt="No Image Available"
+    style="width: 200px; height: auto; margin-top: 10px;"
+  />
+
+  <!-- Thumbnail (Optional Field) -->
+  <label for="thumbnail">Thumbnail URL:</label>
+  <input
+    type="text"
+    id="thumbnail"
+    name="thumbnail"
+    value="<%= thumbnail || '/images/vehicles/no-image-available-thumb.png' %>"
+    readonly
+    placeholder="e.g., /images/vehicles/no-image-available-thumb.png"
+  />
+
+  <button type="submit">Update Vehicle</button>
+</form>

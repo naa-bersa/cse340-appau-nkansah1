@@ -217,9 +217,9 @@ body{
 }
 
 .big-container h1{
-  font-size: 30px;
-  margin-left: 47px;
-  margin-top: 15px;
+  font-size: 25px;
+  /* margin-left: 47px;
+  margin-top: 15px; */
 }
 
 #vehicle_header{
@@ -251,11 +251,11 @@ body{
  font-size: 10px;
 }
 
-.big-container h1{
+/* .big-container h1{
   font-size: 20px;
   margin-left: 47px;
   margin-top: 15px;
-}
+} */
 
 /* .vehicleNumbers{
   font-size: 15px;
@@ -356,18 +356,22 @@ img{
 form {
   display: flex;
   flex-direction: column; /* Stack the form elements vertically */
-  background-color: rgb(31, 83, 83);
-  border: #000000;
-  margin: 20px;
+  background-color: white; /* Set the background color to white */
+  box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  padding: 20px; /* Add padding inside the form */
+  width: 300px; /* Set a width for the form */
+  margin: auto; /* Center horizontally */
+  position: relative; /* Allows for further positioning if needed */
+  margin-top: 50px; 
+  margin-bottom: 40px;
 }
-
 label {
   margin-bottom: 5px; 
   font-size: 17px; 
   text-align: left; 
-  margin-left: 15px;
   margin-top: 20px;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
 }
 
 input[type="email"],
@@ -378,9 +382,9 @@ input[type="password"]
   border: 1px solid #ccc; 
   border-radius: 4px; /* Slightly rounded corners */
   font-size: 14px; /* Smaller font size for inputs */
-  width: 200px; 
+  width: 300px; 
   max-width: 100%; /* Ensure it doesn't exceed the container */
-  margin-left: 15px;
+  margin-top: 20px;
 
 }
 
@@ -389,15 +393,12 @@ button {
   background-color: #28a745; /* Green background for the button */
   color: white; /* White text on button */
   border: none; /* Remove border */
-  border-radius: 4px; /* Rounded corners */
+  border-radius: 15px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
   font-size: 14px; /* Smaller font size for button */
   transition: background-color 0.3s; /* Smooth transition for hover effect */
   width: 200px; /* Set specific width for button */
-  margin-top: 10px; /* Space above the button */
-  margin-bottom: 8.9px;
-  /* padding-right: 7px; */
-  margin-left: 15px;
+  margin-left: 24px;
 }
 
 button:hover {
@@ -405,15 +406,15 @@ button:hover {
 }
 
 .sign{
-    text-align: left; /* left the paragraph */
+    text-align: center; /* left the paragraph */
     margin-top: 15px; /* Space above the paragraph */
     margin-left: 15px;
-    color: #f4f4f4;
+    color: #000000;
     margin-bottom: 20px;
 }
 
 .sign a{
-  color: #f4f4f4;
+  color: #68caff;
 }
 
 
@@ -436,6 +437,13 @@ form div small {
   list-style-type: none;
 }
 
+.success{
+  margin: 10px;
+  margin-left: 48px;
+  color: #000000;
+  font-size: 20px;
+
+}
 
 
 
@@ -528,11 +536,11 @@ form div small {
   font-weight: bold;
 }
 
-.big-container h1{
+/* .big-container h1{
   font-size: 20px;
   margin-left: 47px;
   margin-top: 15px;
-}
+} */
 
 /* .vehicleNumbers{
 font-size: 10px;
@@ -571,24 +579,6 @@ margin-left: 45px;
 
 /* Form styles */
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 400px; /* Set specific width for input fields */
-}
 
-button {
-  font-size: 16px; /* Smaller font size for button */
-}
 
-button:hover {
-  background-color: #218838; /* Darker green on hover */
-}
-
-.sign{
-    text-align: left; /* left the paragraph */
-    margin-left: 15px;
-    color: #f4f4f4;
-    margin-bottom: 10px;
-}
 }

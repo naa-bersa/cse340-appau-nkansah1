@@ -1,5 +1,5 @@
 
-    <h1><%= title %></h1>
+   
 
     <% if (messages.error) { %>
         <div class="flash-message"><%= messages.error %></div>
@@ -16,18 +16,19 @@
 
 
     <form action="/account/register" method="POST">
+        <h1><%= title %></h1>
 
-        <label for="account_firstname" class="required">First Name:</label>
-        <input type="text" name="account_firstname" id="account_firstname" required value="<%= locals.account_firstname %>">
+        <!-- <label for="account_firstname" class="required">First Name:</label> -->
+        <input type="text" name="account_firstname" id="account_firstname" placeholder="First Name" required value="<%= locals.account_firstname %>">
 
-        <label for="account_lastname" class="required">Last Name:</label>
-        <input type="text" name="account_lastname" id="account_lastname" required value="<%= locals.account_lastname %>">
+        <!-- <label for="account_lastname" class="required">Last Name:</label> -->
+        <input type="text" name="account_lastname" id="account_lastname"  placeholder="Last Name" required value="<%= locals.account_lastname %>">
 
-        <label for="account_email" class="required">Email:</label>
-        <input type="email" name="account_email" id="account_email" required value="<%= locals.account_email %>">
+        <!-- <label for="account_email" class="required">Email:</label> -->
+        <input type="email" name="account_email" id="account_email"  placeholder="Email" required value="<%= locals.account_email %>">
 
-        <label for="account_password" class="required">Password:</label>
-          <input type="password" id="account_password" name="account_password" 
+        <!-- <label for="account_password" class="required">Password:</label> -->
+          <input type="password" id="account_password" name="account_password"  placeholder="Password"
            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" 
            required /><br /><br />
            

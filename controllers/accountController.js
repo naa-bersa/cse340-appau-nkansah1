@@ -130,7 +130,7 @@ async function loginAccount(req, res) {
           });
         }
         console.log("Redirecting to /account/");
-        return res.redirect("/account");
+        return res.redirect("/account/management");
       }
       // else {
       //   req.flash("notice", "Check your credentials")
@@ -162,14 +162,14 @@ async function loginAccount(req, res) {
 // }
 async function buildAccountManagement(req, res, next) {
   try {
-    // Fetch navigation items (if needed)
+    // Fetch navigation items 
     let nav = await utilities.getNav();
     
     // Get any flash messages
     let flashMessage = req.flash("notice") || [];
     
-    // Render the view, passing the data (including flash messages)
-    res.render("account", {
+    // Render the view, passing the data 
+    res.render("account/management", {
       title: "Account Management",
       nav,
       messages: flashMessage,

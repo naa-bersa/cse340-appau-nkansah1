@@ -1,0 +1,41 @@
+<% if (flashMessage) { %>
+    <div class="flash-message">
+        <p><%= flashMessage %></p>
+    </div>
+<% } %>
+
+<h1>Add New Classification</h1>
+
+<div class="add-classification-form-container">
+    
+    <form
+      action="/inv/addClassifications"
+      method="post"
+      class="add-classification-form">
+
+      <p>Name Must Be Alphabetic Characters Only</p>
+
+      <label
+        for="classification_name"
+        class="add-classification-form-label"
+        >Classification Name:</label>
+
+      <input
+        type="text"
+        id="classification_name"
+        name="classification_name"
+        required
+        pattern="^[A-Za-z0-9]+$"
+        title="No spaces or special characters allowed."
+        class="add-classification-form-input"/>
+
+        
+
+      <button type="submit" class="add-classification-form-button">
+        Add Classification
+      </button>
+
+    </form>
+  </div>
+  </div>
+  
