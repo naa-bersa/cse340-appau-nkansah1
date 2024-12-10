@@ -6,59 +6,52 @@
   <p><%= flashMessage %></p>
 <% } %>
 
-<form action="/inv/add-inventory" method="POST" enctype="multipart/form-data">
-  <label for="classificationList">Classification:</label>
+<form action="/inv/add-inventory" method="post" id="addInventoryForm">
+  <label for="classification_id" class="form-label">Classification:</label>
   <%- classificationList %>
 
-  <label for="make">Make:</label>
-  <input type="text" id="make" name="make" required />
+  <label for="inv_make">Make:</label>
+  <input type="text" id="inv_make" name="inv_make" value="<%= locals.inv_make %>" required />
 
-  <label for="model">Model:</label>
-  <input type="text" id="model" name="model" required />
+  <label for="inv_model">Model:</label>
+  <input type="text" id="inv_model" name="inv_model" value="<%= locals.inv_model %>" required />
+  <label for="inv_year">Year:</label>
+  <input type="number" id="inv_year" name="inv_year" value="<%- locals.inv_year %>" required />
 
-  <label for="year">Year:</label>
-  <input type="number" id="year" name="year" required />
 
-  <label for="color">Color:</label>
-  <input type="text" id="color" name="color" required />
+  <label for="inv_color">Color:</label>
+  <input type="text" id="inv_color" name="inv_color" value="<%- locals.inv_color %>" required />
 
-  <label for="description">Description:</label>
-  <textarea id="description" name="description" required></textarea>
+  <label for="inv_description">Description:</label>
+  <textarea id="inv_description" name="inv_description" required><%-locals.inv_description %></textarea>
 
-  <label for="price">Price:</label>
-  <input type="number" step="0.01" id="price" name="price" required />
+  <label for="inv_price">Price:</label>
+  <input type="numeric" step="0.01" id="inv_price" name="inv_price" value="<%- locals.inv_price %>" required />
 
-  <label for="miles">Miles:</label>
-  <input type="number" id="miles" name="miles" required />
 
+  <label for="inv_miles">Miles:</label>
+  <input type="number" id="inv_miles" name="inv_miles" value="<%- locals.inv_miles %>" required />
  <!-- Image File Input (Disabled) -->
-<label for="image">Select Image:</label>
+<label for="inv_image">Select Image:</label>
 <input
-   type="file"
-   id="image"
-   name="image"
-   accept="image/png"
-   disabled
+   type="text"
+   id="inv_image"
+   name="inv_image"
+  value= "/images/vehicles/no-image.png"
+  readonly
+  required
  /> 
-
-<!-- Image Preview Section (Only shows preset image) -->
-<img
-   id="preview"
-   src="/images/vehicles/no-image.png" 
-   alt="Predefined Image"
-   style="width: 200px; height: auto; margin-top: 10px;"
- />
 
 
  <!-- Thumbnail (Optional Field) -->
- <label for="thumbnail">Thumbnail URL:</label>
+ <label for="inv_thumbnail">Thumbnail URL:</label>
  <input
    type="text"
-   id="thumbnail"
-   name="thumbnail"
-   value="<%= '/images/vehicles/no-image-available-thumb.png' %>"
+   id="inv_thumbnail"
+   name="inv_thumbnail"
+   value="/images/vehicles/no-image-tn.png"
    readonly
-   placeholder="e.g., /images/vehicles/no-image-available-thumb.png"
+   required
  />
 
 

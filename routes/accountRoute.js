@@ -28,7 +28,7 @@ router.get("/register", accountController.buildRegister);
 // Process the registration data
 router.post("/register", regValidate.registrationRules(),regValidate.checkRegData,utilities.handleErrors(accountController.registerAccount))
 
-// Process the login attempt
+// Route to Process the login attempt
 router.post("/login", regValidate.loginRules(),regValidate.checkLoginData, utilities.handleErrors(accountController.loginAccount))
 
 // Error-handling middleware

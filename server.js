@@ -46,7 +46,10 @@ app.use(function(req, res, next){
   next()
 })
 
-
+/* ***********************
+ * Serving Static Files
+ *************************/
+app.use(express.static("public"));
 
 
 /* ***********************
