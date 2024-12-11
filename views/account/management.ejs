@@ -1,9 +1,33 @@
 <title><%= title %></title>
+
 <h1><%= title %></h1>
 
-<% if (messages && messages.length) { %>
-  <p><%= messages[0] %></p>
-<% } %>
+<%# messages() %>
 
-<p class="success">You're logged in</p>
-
+<%#if (errors) { %>
+  <!-- <ul class="notice"> -->
+ <%# errors.array().forEach(error => { %>
+   <!-- <li><%# error.msg %></li> -->
+<%#  }) %>
+ <!-- </ul> -->
+<%# } %>
+   
+   
+   
+   <!-- Welcome Message -->
+  <h2>Welcome, <%= accountData.account_firstname %></h2>
+   
+  <!-- Update Account Section (Shown to All Users) -->
+  <p>
+    <a href="/account/updateAccount/<%= accountData.account_id %>">Update Account Information</a>
+  </p>
+   
+  <!-- Inventory Management Section (Admins and Employees Only) -->
+  <% if (accountData.account_type === "Admin" || accountData.account_type === "Employee") { %>
+    <h3>Inventory Management</h3>
+    <p>
+      <a href="/inv/">Manage Inventory</a>
+    </p>
+  <% } %>
+   
+ 

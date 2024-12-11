@@ -1,0 +1,53 @@
+<% if(title) { %>
+    <h1><%= title %></h1>
+    <% } %> <%- messages() %>
+     
+    <% if (errors) { %>
+        <ul class="notice-fail">
+          <% errors.array().forEach(error => { %>
+            <li><%= error.msg %></li>
+         <%  }) %>
+          </ul>
+         <% } %>
+     
+         <form action="/account/update/<%= accountData.account_id %>" method="post" id="updateAccountForm">
+            <label for="account_firstname">First Name</label>
+            <input type="text" name="account_firstname" id="account_firstname" placeholder="Enter First Name" required value="<%= accountData.account_firstname %>"/>
+            <label for="account_lastname">Last Name</label>
+            <input type="text" name="account_lastname" id="account_lastname" placeholder="Enter Last Name" required value="<%= accountData.account_lastname %>"/>
+            <label for="account_email">Email</label>
+            <input type="email" name="account_email" id="account_email" placeholder="Enter Email" required value="<%= accountData.account_email %>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+            <input hidden name="account_id" value="<%= accountData.account_id %>"/>
+            <input type="submit" value="Update Account" />
+        </form>
+     
+        <form action="/account/updatePassword/<%= accountData.account_id %>" method="post" id="updatePasswordForm">
+            <label for="account_password">Password</label>
+            <div class="password-container">
+            <input type="password" name="account_password" id="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" />
+            <span><i class="fa-solid fa-eye"></i>
+            <!-- <i class="fa-solid fa-eye-slash"></i> -->
+            </span>
+            </div>
+            <p>
+              Password must be at least 12 characters, contain at least 1 uppercase
+              letter, 1 lowercase letter, 1 number and 1 special character
+            </p>
+            <input hidden name="account_id" value="<%= accountData.account_id %>"/>
+            <input type="submit" value="Update Password" />
+        </form>
+     
+        <script>
+     
+          const showPasswordbtn = document.querySelector(".password-container span > i");
+          const passwordInput = document.querySelector("#password");
+          showPasswordbtn.addEventListener("click", () => {
+          if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          showPasswordbtn.classList.add("fa-eye-slash");
+          } else {
+          passwordInput.type = "password";
+          showPasswordbtn.classList.remove("fa-eye-slash");
+          }
+          });
+      </script>

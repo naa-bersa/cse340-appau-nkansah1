@@ -178,5 +178,19 @@ Util.checkJWTToken = (req, res, next) => {
   return classificationList
 }
  
+// Middleware to check account type
+Util.checkAdminOrEmployee = (req, res, next) => {
+  const accountType = res.locals.accountData.account_type; 
+  if (accountType === "Admin" || accountType === "Employee") {
+    next();
+} else {
+  req.flash(
+    "noyice-fail",
+    "You have to be an admin or employee to access this page"
+  );
+  res.redirect("/account/login");
+  }
+}; 
 
+  
 module.exports = Util;

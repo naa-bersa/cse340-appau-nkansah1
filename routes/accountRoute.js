@@ -7,7 +7,6 @@ const utilities = require('../utilities')
 
 
 
-
 // Higher-order function for handling errors in async route handlers
 const asyncHandler = (fn) => {
   return (req, res, next) => {
@@ -36,6 +35,40 @@ router.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something went wrong!');
 });
+
+//Route to process logout
+router.get("/logout", utilities.handleErrors(accountController.processLogout));
+
+//Route to update account view
+router.get(
+  "/update/:account_id",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildUpdateAccount)
+);
+
+// Process account update
+router.post(
+  "/update",
+  utilities.checkLogin,
+  regValidate.updateAccountRules(),
+  regValidate.checkRegData,
+  utilities.handleErrors(accountController.processAccountUpdate)
+);
+ 
+//Route to update account
+// router.post(
+//   "/update/:account_id",
+//   regValidate.updateAccountRules(),
+//   regValidate.checkUpdateAccountData,
+//   utilities.handleErrors(accountController.processUpdateAccount)
+// );
+ 
+// router.post(
+//   "/updatePassword/:account_id",
+//   regValidate.updatePasswordDataRules(),
+//   regValidate.checkUpdatePasswordData,
+//   utilities.handleErrors(accountController.processUpdatePassword)
+// );
 
 // Exporting the router to be used elsewhere in the application
 module.exports = router;

@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+const accountController = {};
+
 /* ****************************************
  *  Deliver login view
  * *************************************** */
@@ -149,17 +151,20 @@ async function loginAccount(req, res) {
 }
 
 /* ****************************************
+ *  Process Logout
+ * *************************************** */
+
+async function processLogout(req, res, next) {
+  if (req.cookies.jwt) {
+    res.clearCookie("jwt");
+  }
+ 
+  return res.redirect("/");
+}
+
+/* ****************************************
  *  Deliver Account Management view
  * *************************************** */
-// async function buildAccountManagement(req, res, next) {
-//   let nav = await utilities.getNav();
-//   let flashMessage = req.flash("notice") || [];
-//   res.render("account/management", {
-//     title: "Account Management",
-//     nav,
-//     flashMessage,
-//   });
-// }
 async function buildAccountManagement(req, res, next) {
   try {
     // Fetch navigation items 
@@ -180,10 +185,71 @@ async function buildAccountManagement(req, res, next) {
   }
 }
 
+/* ****************************************
+ *  Deliver update account view
+ * *************************************** */
+async function buildUpdateAccount (req, res, next) {
+  let nav = await utilities.getNav();
+  const account_id = parseInt(req.params.account_id);
+  const account = await accountModel.getAccountById(account_id);
+ 
+  res.render("account/update-account", {
+    title: "Update Account Information",
+    nav,
+    account,
+    errors: null,
+    flashMessage: req.flash("notice") || null,
+  });
+};
+
+
+/* ****************************************
+ *  Process account update
+ * *************************************** */
+async function processAccountUpdate (req, res, next) {
+  const { account_id, account_firstname, account_lastname, account_email } = req.body;
+ 
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    const account = await accountModel.getAccountById(account_id);
+    return res.status(400).render("account/update-account", {
+      title: "Update Account Information",
+      nav,
+      account,
+      errors,
+    });
+  }
+ 
+  try {
+    const updatedAccount = await accountModel.updateAccountDetails(
+      account_id,
+      account_firstname,
+      account_lastname,
+      account_email
+    );
+ 
+    if (updatedAccount) {
+      res.locals.accountData = updatedAccount;
+      req.flash("notice", `Account ${updatedAccount.account_firstname} updated successfully.`);
+      return res.redirect("/account/");
+    } else {
+      req.flash("notice", "Account update failed. Please try again.");
+      return res.redirect(`/account/update/${account_id}`);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   buildLogin,
   buildRegister,
   registerAccount,
   loginAccount,
   buildAccountManagement,
+  processLogout,
+  buildUpdateAccount,
+  processAccountUpdate
+
 };
