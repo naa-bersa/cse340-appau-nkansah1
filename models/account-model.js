@@ -42,4 +42,20 @@ async function findByEmail(account_email) {
   }
 }
 
-  module.exports = { registerAccount, checkExistingEmail, findByEmail };
+/* *****************************
+ * Return account data using account ID
+ * ***************************** */
+async function getAccountById(account_id) {
+  try {
+    const result = await pool.query(
+      "SELECT account_id, account_firstname, account_lastname, account_email, account_type FROM account WHERE account_id = $1",
+      [account_id]
+    );
+    return result.rows[0];
+  } catch (error) {
+    console.error("Error fetching account by ID:", error.message);
+    throw new Error("No matching account found");
+  }
+}
+
+  module.exports = { registerAccount, checkExistingEmail, findByEmail, getAccountById };

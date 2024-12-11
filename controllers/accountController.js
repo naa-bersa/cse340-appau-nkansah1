@@ -193,7 +193,7 @@ async function buildUpdateAccount (req, res, next) {
   const account_id = parseInt(req.params.account_id);
   const account = await accountModel.getAccountById(account_id);
  
-  res.render("account/update-account", {
+  res.render("account/update", {
     title: "Update Account Information",
     nav,
     account,
