@@ -201,7 +201,7 @@ invCont.editInventoryView = async function (req, res, next) {
   );
   const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`;
   res.render("./inventory/edit-inventory", {
-    title: "Edit ",
+    title: "Edit" + itemName,
     nav,
     classificationList,
     errors: null,
@@ -264,7 +264,7 @@ invCont.updateInventory = async function (req, res, next) {
     const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
     req.flash("notice", "Sorry, the insert failed.")
     res.status(501).render("inventory/edit-inventory", {
-    title: "Edit " ,
+    title: "Edit" + itemName ,
     nav,
     classificationList,
     errors: null,
@@ -282,5 +282,56 @@ invCont.updateInventory = async function (req, res, next) {
     classification_id: itemData[0].classification_id,
   });
 };}
-  
+
+
+
+/* ***************************
+ *  Deliver Delete Confirmation View
+ * ************************** */
+invCont.deleteView = async function (req, res, next) {
+  try {
+    const inv_id = parseInt(req.params.inv_id);
+    let nav = await utilities.getNav();
+    const itemData = await invModel.getInventoryDetailsById(inv_id); // Get inventory item data
+    const itemName = `${itemData.inv_make} ${itemData.inv_model}`;
+ 
+    // Render the delete confirmation page with the item data
+    res.render("./inventory/delete-confirm", {
+      title: "Delete " + itemName,
+      nav,
+      errors: null,
+      inv_id: itemData[0].inv_id,
+      inv_make: itemData[0].inv_make,
+      inv_model: itemData[0].inv_model,
+      inv_year: itemData[0].inv_year,
+      inv_price: itemData[0].inv_price,
+    });
+    console.log("what is happening")
+  } catch (error) {
+    next(error);
+  }
+};
+ 
+/* ***************************
+ *  Process Delete Inventory
+ * ************************** */
+invCont.processDeleteInventory = async function (req, res, next) {
+  try {
+    const inv_id = parseInt(req.body.inv_id);
+ 
+    // Call model function to delete the item
+    const deleteResult = await invModel.deleteInventoryItem(inv_id);
+ 
+    if (deleteResult.rowCount > 0) {
+      req.flash("notice", "Vehicle deleted successfully.");
+      res.redirect("/inv/");
+    } else {
+      req.flash("notice", "Vehicle deletion failed.");
+      res.redirect(`/inv/delete/${inv_id}`);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = invCont;
