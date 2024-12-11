@@ -8,12 +8,36 @@ const invCont = {};
  * ************************** */
 invCont.buildByClassificationId = async function (req, res, next) {
   const classification_id = req.params.classificationId;
-  // console.log("CLASSIFICATION ID", classification_id);
+  
+
+  // Fetch the inventory data for the given classification ID from the model
   const data = await invModel.getInventoryByClassificationId(classification_id);
-  // console.log("INVCONTROLLER", data);
-  const grid = await utilities.buildClassificationGrid(data);
-  let nav = await utilities.getNav();
+
+  
+
+  // Fetch the navigation data
+  const nav = await utilities.getNav();
+
+  // Initialize a default message for when no vehicles are found
+  let grid = '<h3>No vehicles found in this classification.</h3>';
+
+  // If no vehicles are found, render the classification view with the default message
+  if (data.length === 0) {
+    res.render("./inventory/classification", {
+      title: "Missing Vehicles",
+      nav,
+      grid,
+    });
+    return; // Exit the function early
+  }
+
+  grid = await utilities.buildClassificationGrid(data);
+  // let nav = await utilities.getNav();
+
+  // Extract the classification name from the first item in the data array
   const className = data[0].classification_name;
+
+  // Render the classification view with the grid and navigation data
   res.render("./inventory/classification", {
     title: className + " vehicles",
     nav,
@@ -204,43 +228,39 @@ invCont.editInventoryView = async function (req, res, next) {
  * ************************** */
 invCont.updateInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
-  console.log(req.body)
   const {
-    inv_id,
     inv_make,
-    inv_model,
-    inv_description,
-    inv_image,
-    inv_thumbnail,
-    inv_price,
-    inv_year,
-    inv_miles,
-    inv_color,
-    classification_id,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+      classification_id,
+      inv_id
   } = req.body
-  // const classificationList = await utilities.buildClassificationList(classification_id);
-  const updateResult = await invModel.updateInventory(
-    inv_id,  
-    inv_make,
-    inv_model,
-    inv_description,
-    inv_image,
-    inv_thumbnail,
-    inv_price,
-    inv_year,
-    inv_miles,
-    inv_color,
-    classification_id
-  )
   
+  const updateResult = await invModel.updateInventory(
+    inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+      classification_id,
+      inv_id
+  )
   if (updateResult) {
     const itemName = updateResult.inv_make + " " + updateResult.inv_model
-    req.flash("notice", `The ${itemName} was successfully updated.`)
+    req.flash("success", `The ${itemName} was successfully updated.`)
     res.redirect("/inv/")
   } else {
-    console.log("class_id", classification_id)
-    const classificationList = await utilities.buildClassificationList(classification_id)
-    console.log("clasification List:", classificationList);
+    
     const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
     req.flash("notice", "Sorry, the insert failed.")
     res.status(501).render("inventory/edit-inventory", {

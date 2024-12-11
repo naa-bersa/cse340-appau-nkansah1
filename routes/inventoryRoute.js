@@ -44,7 +44,10 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView));
 
 // Update Inventory Route
-router.post("/edit-inventory", validate.inventoryRules(), validate.checkUpdateData, utilities.handleErrors(invController.updateInventory) );
+router.post("/edit-inventory", 
+  validate.inventoryRules(), 
+  validate.checkUpdateData,
+   utilities.handleErrors(invController.updateInventory) );
 
 //  router.get("/detail/:inventory_id", utilities.handleErrors(invController.buildByInventoryId))
 

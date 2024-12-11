@@ -24,14 +24,14 @@ validate.inventoryRules = () => {
       .withMessage("Model is required."),
 
     // Year
-    body("inv_description")
+    body("inv_year")
       .trim()
       .escape()
       .notEmpty()
       .isNumeric()
       .withMessage("Please provide a year.")
       .isLength({ min: 4, max: 4 })
-      .withMessage("Year must e exactly 4 digits"),
+      .withMessage("Year must be exactly 4 digits"),
 
     // Description is required
     body("inv_description")
@@ -110,16 +110,40 @@ validate.checkInventoryData = async (req, res, next) => {
  * ***************************** */
 validate.checkUpdateData = async (req, res, next) => {
   let errors = [];
-  const inv_id = req.body.inv_id;
+  console.log("req.body in validation", req.body)
+  const {
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+    classification_id
+  } = req.body;
   // const vehicleName = req.body.inv_year + "" + req.body.inv_make + "" + req.body.inv_make;
   errors = validationResult(req);
+  console.log("errors", errors)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav();
     res.render("inventory/edit-inventory", {
-      errors: errors.array(),
+      errors,
       title: "Edit",
       nav,
       inv_id,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+      classification_id
     });
     return;
   }
