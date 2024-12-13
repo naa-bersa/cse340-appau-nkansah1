@@ -137,7 +137,7 @@ validate.updateAccountRules = () => {
         const accountId = req.body.account_id;
 
         // Use the new function to check email uniqueness during updates
-        const emailExists = await accountModel.checkEmailForUpdate(account_email, accountId);
+        const emailExists = await accountModel.checkExistingEmail(account_email, accountId);
 
         if (emailExists) {
           throw new Error("Email already in use by another account.");
@@ -146,48 +146,28 @@ validate.updateAccountRules = () => {
   ];
 };
 
-
-/* ****************************************
- *  Process account update
- * *************************************** */
-accountController.processAccountUpdate = async function (req, res, next) {
-  const { account_id, account_firstname, account_lastname, account_email } = req.body;
- 
-  const errors = validationResult(req);
+validate.checkUpdateAccountData = async (req, res, next) => {
+  const { account_firstname, account_lastname, account_email } = req.body;
+  let errors = [];
+  errors = validationResult(req);
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav();
-    const account = await accountModel.getAccountById(account_id);
-    return res.status(400).render("account/update-account", {
-      title: "Update Account Information",
-      nav,
-      account,
+    res.render("account/update", {
       errors,
-    });
-  }
- 
-  try {
-    const updatedAccount = await accountModel.updateAccountDetails(
-      account_id,
+      title: "Update Account",
+      nav,
       account_firstname,
       account_lastname,
-      account_email
-    );
- 
-    if (updatedAccount) {
-      res.locals.accountData = updatedAccount;
-      req.flash("notice", `Account ${updatedAccount.account_firstname} updated successfully.`);
-      return res.redirect("/account/");
-    } else {
-      req.flash("notice", "Account update failed. Please try again.");
-      return res.redirect(`/account/update/${account_id}`);
-    }
-  } catch (error) {
-    next(error);
+      account_email,
+    });
+    return;
   }
+  next();
 };
+
  
 
-validate.updatePasswordDataRules = (req, res, next) => {
+validate.updatePasswordRules = (req, res, next) => {
   return[
     body("account_password")
     .trim()

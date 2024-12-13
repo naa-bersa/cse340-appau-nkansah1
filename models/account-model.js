@@ -18,15 +18,21 @@ async function registerAccount(account_firstname, account_lastname, account_emai
   /* **********************
  *   Check for existing email
  * ********************* */
-async function checkExistingEmail(account_email){
-  try {
-    const sql = "SELECT * FROM account WHERE account_email = $1"
-    const email = await pool.query(sql, [account_email])
-    return email.rowCount
-  } catch (error) {
-    return error.message
+  async function checkExistingEmail(account_email, account_id = null) {
+    try {
+      let sql = "SELECT * FROM account WHERE account_email = $1";
+      const values = [account_email];
+   
+      if (account_id) {
+        sql += " AND account_id != $2";
+        values.push(account_id);
+      }
+      const email = await pool.query(sql, values);
+      return email.rowCount;
+    } catch (error) {
+      return error.message;
+    }
   }
-}
 
 /* *****************************
 * Return account data using email address
@@ -58,4 +64,47 @@ async function getAccountById(account_id) {
   }
 }
 
-  module.exports = { registerAccount, checkExistingEmail, findByEmail, getAccountById };
+/* *****************************
+ * Update Account Details
+ * ***************************** */
+async function updateAccountDetails(account_id, account_firstname, account_lastname, account_email) {
+  try {
+    const result = await pool.query(
+      `
+      UPDATE account
+      SET 
+        account_firstname = $1,
+        account_lastname = $2,
+        account_email = $3
+      WHERE 
+        account_id = $4
+      RETURNING account_id, account_firstname, account_lastname, account_email;
+      `,
+      [account_firstname, account_lastname, account_email, account_id]
+    );
+
+    // Check if an account was updated
+    if (result.rowCount === 0) {
+      throw new Error("No account found with the provided ID");
+    }
+
+    return result.rows[0]; // Return the updated account data
+  } catch (error) {
+    console.error("Error updating account details:", error.message); // Log the error message
+    throw new Error("Database operation failed");
+  }
+}
+
+async function updateAccountPassword(account_id, account_password) {
+  try {
+    const result = await pool.query(
+      "UPDATE account SET account_password = $1 WHERE account_id = $2 RETURNING *",
+      [account_password, account_id]
+    );
+    return result.rows[0];
+  } catch (error) {
+    return new Error("Update Account model fail", error);
+  }
+}
+
+  module.exports = { registerAccount, checkExistingEmail, findByEmail, getAccountById, updateAccountDetails,updateAccountPassword };

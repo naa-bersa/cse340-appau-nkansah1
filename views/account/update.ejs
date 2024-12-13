@@ -10,18 +10,18 @@
           </ul>
          <% } %>
      
-         <form action="/account/update/<%= accountData.account_id %>" method="post" id="updateAccountForm">
+         <form action="/account/update/<%= account.account_id %>" method="post" id="updateAccountForm">
             <label for="account_firstname">First Name</label>
-            <input type="text" name="account_firstname" id="account_firstname" placeholder="Enter First Name" required value="<%= accountData.account_firstname %>"/>
+            <input type="text" name="account_firstname" id="account_firstname" placeholder="Enter First Name" required value="<%= account.account_firstname %>"/>
             <label for="account_lastname">Last Name</label>
-            <input type="text" name="account_lastname" id="account_lastname" placeholder="Enter Last Name" required value="<%= accountData.account_lastname %>"/>
+            <input type="text" name="account_lastname" id="account_lastname" placeholder="Enter Last Name" required value="<%= account.account_lastname %>"/>
             <label for="account_email">Email</label>
-            <input type="email" name="account_email" id="account_email" placeholder="Enter Email" required value="<%= accountData.account_email %>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
-            <input hidden name="account_id" value="<%= accountData.account_id %>"/>
+            <input type="email" name="account_email" id="account_email" placeholder="Enter Email" required value="<%= account.account_email %>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+            <input hidden name="account_id" value="<%= account.account_id %>"/>
             <input type="submit" value="Update Account" />
         </form>
      
-        <form action="/account/updatePassword/<%= accountData.account_id %>" method="post" id="updatePasswordForm">
+        <form action="/account/updatePassword/<%= account.account_id %>" method="post" id="updatePasswordForm">
             <label for="account_password">Password</label>
             <div class="password-container">
             <input type="password" name="account_password" id="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" />
@@ -33,7 +33,7 @@
               Password must be at least 12 characters, contain at least 1 uppercase
               letter, 1 lowercase letter, 1 number and 1 special character
             </p>
-            <input hidden name="account_id" value="<%= accountData.account_id %>"/>
+            <input hidden name="account_id" value="<%= account.account_id %>"/>
             <input type="submit" value="Update Password" />
         </form>
      

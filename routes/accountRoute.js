@@ -48,27 +48,23 @@ router.get(
 
 // Process account update
 router.post(
-  "/update",
+  "/update/:account_id",
   utilities.checkLogin,
   regValidate.updateAccountRules(),
-  regValidate.checkRegData,
+  regValidate.checkUpdateAccountData,
   utilities.handleErrors(accountController.processAccountUpdate)
 );
+
+// Process password change
+router.post(
+  "/updatePassword/:account_id",
+  utilities.checkLogin,
+  regValidate.updatePasswordRules(),
+  utilities.handleErrors(accountController.processPasswordChange)
+);
+
  
-//Route to update account
-// router.post(
-//   "/update/:account_id",
-//   regValidate.updateAccountRules(),
-//   regValidate.checkUpdateAccountData,
-//   utilities.handleErrors(accountController.processUpdateAccount)
-// );
- 
-// router.post(
-//   "/updatePassword/:account_id",
-//   regValidate.updatePasswordDataRules(),
-//   regValidate.checkUpdatePasswordData,
-//   utilities.handleErrors(accountController.processUpdatePassword)
-// );
+
 
 // Exporting the router to be used elsewhere in the application
 module.exports = router;
