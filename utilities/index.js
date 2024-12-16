@@ -192,5 +192,31 @@ Util.checkAdminOrEmployee = (req, res, next) => {
   }
 }; 
 
-  
+// Build the vehicle view by id
+
+Util.buildVehicleViewbyId = async function (data) {
+  let view = `<div id="detailDiv">
+  <div id="imageDiv"> <img id="vehicleImage" src=${
+    data.inv_image
+  } alt="Image of ${data.inv_year} ${data.inv_make} ${
+    data.inv_model
+  } on CSE Motors"/></div>
+  <div id="infoDiv">
+  <div id="vehicleInfo">
+  <p><span>Price: $</span>${new Intl.NumberFormat("en-US").format(
+    data.inv_price
+  )}</p>
+  <p><span>Color: </span>${data.inv_color}</p>
+  <p><span>Mileage: </span>${new Intl.NumberFormat("en-US").format(
+    data.inv_miles
+  )}</p>
+  </div>
+  <p><span>Description: </span>${data.inv_description}</p>
+ 
+  </div>
+ 
+   </div>`;
+    return view;
+};
+
 module.exports = Util;

@@ -6,6 +6,54 @@
     } %>
    
     <%# messages() %>
+
    
     <%- content %>
+
+    <div class="reviewsSectionTitle">
+    <h2>Vehicle Reviews</h2>
+    <button title="Add A review" id="addReviewBtn"><i class="fa-solid fa-plus"></i></button>
+</div>
+<div class="vehicleReviewsSection">
+    <div class="vehicleReviews">
+        <ul>
+            <% if (reviewData.length > 0) { %>
+                <% reviewData.forEach((review) => { %>
+                    <li>
+                        <div class="reviewerInfo">
+                            <p><i class="fas fa-user"></i><%= review.reviewer_name %></p>
+                            <p><%= review.review_timestamp %></p>
+                        </div>
+                        <p><%= review.review_content %></p>
+                    </li>
+                <% }) %>
+            <% } else { %>
+                <p>No reviews yet. Click on the button to add one</p>
+            <% } %>
+        </ul>
+    </div>
+</div>
+
+
+
+    <div id="reviewForm">
+      <form action="/review/addReview" method="POST">
+          <input type="hidden" name="inv_id" value="<%= vehicle_id %>">
+          <input type="hidden" name="account_id" value="<%= account_id %>">
+          <div>
+              <label for="reviewer_name">Your Name:</label>
+              <input type="text" id="reviewer_name" name="reviewer_name" required>
+          </div>
+          <div>
+              <label for="review_content">Your Review:</label>
+              <textarea id="review_content" name="review_content" rows="4" columns="50" required></textarea>
+          </div>
+          <div>
+              <button type="submit">Submit Review</button>
+          </div>
+      </form>
+  </div>
+
+
+
   </div>

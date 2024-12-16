@@ -17,6 +17,7 @@ const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const accountRoute = require("./routes/accountRoute");
 const flash = require('connect-flash');
+const reviewRoute = require('./routes/reviewRoute');
 
 
 /* ***********************
@@ -71,6 +72,7 @@ app.use("/inv", utilities.handleErrors(inventoryRoute));
 // Account route
 app.use("/account", utilities.handleErrors(accountRoute));
 
+app.use('/review', utilities.handleErrors(reviewRoute));
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

@@ -3,6 +3,7 @@ const accountModel = require("../models/account-model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const revModel = require("../models/review-model");
 
 const accountController = {};
 
@@ -166,24 +167,27 @@ async function processLogout(req, res, next) {
  *  Deliver Account Management view
  * *************************************** */
 async function buildAccountManagement(req, res, next) {
-  try {
+  const accountData = res.locals.accountData;
+  const accountReviews = await revModel.getReviewsbyAccountId(
+  accountData.account_id
+  ); console.log(accountReviews)
     // Fetch navigation items 
     let nav = await utilities.getNav();
     
     // Get any flash messages
-    let flashMessage = req.flash("notice") || [];
-    
+    let flashMessage = req.flash("notice") || []; 
     // Render the view, passing the data 
     res.render("account/management", {
       title: "Account Management",
       nav,
+      errors: null,
       messages: flashMessage,
+      accountData,
+      accountReviews,
     });
-  } catch (err) {
-    // Handle any potential errors
-    next(err);
+  
   }
-}
+
 
 /* ****************************************
  *  Deliver update account view

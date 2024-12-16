@@ -1,5 +1,6 @@
 const invModel = require("../models/inventory-model");
 const utilities = require("../utilities");
+const revModel = require("../models/review-model");
 
 const invCont = {};
 
@@ -49,10 +50,12 @@ invCont.buildByClassificationId = async function (req, res, next) {
  *  Build inventory Details by Inventory Id view
  * ************************** */
 invCont.buildByInventoryId = async function (req, res, next) {
-  const inv_id = req.params.inventory_id;
+  const vehicle_id = req.params.inventory_id;
+  const account_id = res.locals.account_id;
   // console.log("VID : " + req.params.inventory_id);
 
-  const data = await invModel.getInventoryDetailsById(inv_id);
+  const data = await invModel.getInventoryDetailsById(vehicle_id);
+  const reviewData = await revModel.getReviewsByVehicleId(vehicle_id);
   const content = await utilities.buildVehicleDetails(data[0]);
   let nav = await utilities.getNav();
   // console.log(data);
@@ -62,6 +65,9 @@ invCont.buildByInventoryId = async function (req, res, next) {
     title: vehicleName + " " + vehicleModel,
     nav,
     content,
+    vehicle_id,
+    account_id,
+    reviewData
   });
 };
 
@@ -103,7 +109,6 @@ invCont.addClassificationView = async function (req, res) {
  * ************************** */
 invCont.processAddClassification = async function (req, res) {
   const { classification_name } = req.body;
-  console.log("*************************request body: ", req.body)
   try {
     await invModel.addClassification(classification_name);
     req.flash("notice", "New classification added successfully.");

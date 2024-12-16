@@ -1,0 +1,22 @@
+<% if(title) {%>
+    <h1><%= title %></h1>
+    <%} %> <%- messages() %>
+ 
+    <div id="deleteReviewForm">
+        <form action="/review/deleteReview" method="POST">
+            <input type="hidden" name="inv_id" value="<%= reviewData.inv_id %>">
+            <input type="hidden" name="account_id" value="<%= reviewData.account_id %>">
+            <input type="hidden" name="review_id" value="<%= reviewData.review_id %>">
+            <div>
+                <label for="reviewer_name">Your Name:</label>
+                <input type="text" id="reviewer_name" name="reviewer_name" readonly value="<%= reviewData.reviewer_name %>" required>
+            </div>
+            <div>
+                <label for="review_content">Your Review:</label>
+                <textarea id="review_content" name="review_content" rows="4" columns="50" readonly required><%= reviewData.review_content %></textarea>
+            </div>
+            <div>
+                <button type="submit">Delete Review</button>
+            </div>
+        </form>
+    </div>

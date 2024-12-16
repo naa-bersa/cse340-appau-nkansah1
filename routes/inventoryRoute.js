@@ -56,6 +56,8 @@ router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteView));
 router.post("/delete", utilities.handleErrors(invController.processDeleteInventory));
 
 
-//  router.get("/detail/:inventory_id", utilities.handleErrors(invController.buildByInventoryId))
+ router.get("/detail/:inventory_id", utilities.handleErrors(invController.buildByInventoryId))
+
+ 
 
 module.exports = router;

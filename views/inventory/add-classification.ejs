@@ -4,7 +4,7 @@
     </div>
 <% } %>
 
-<h1>Add New Classification</h1>
+<h1>Add Classification</h1>
 
 <div class="add-classification-form-container">
     
@@ -13,12 +13,11 @@
       method="post"
       class="add-classification-form">
 
-      <p>Name Must Be Alphabetic Characters Only</p>
-
       <label
         for="classification_name"
         class="add-classification-form-label"
-        >Classification Name:</label>
+        ></label>
+        <h2 class="new-classification">Add New Classification</h2>
 
       <input
         type="text"
@@ -34,6 +33,8 @@
       <button type="submit" class="add-classification-form-button">
         Add Classification
       </button>
+
+      <p class="alert">Name Must Be Alphabetic Characters Only</p>
 
     </form>
   </div>
