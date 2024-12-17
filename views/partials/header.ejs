@@ -4,8 +4,8 @@
 <div id="tools">
     <!-- Only show the "Welcome <Firstname>" and "Logout" links when the client is logged in -->
     <% if (locals.loggedin && locals.accountData) { %>
-        <a href="/account/management" title="Manage your account">Welcome <%= locals.accountData.account_firstname %></a>
-        <a href="/account/logout" title="Click to log out">Logout</a>
+        <a class="hello" href="/account/management" title="Manage your account">Welcome <%= locals.accountData.account_firstname %></a>
+        <a class="logout" href="/account/logout" title="Click to log out">Logout</a>
     <% } else { %>
         <!-- Show the "My Account" link when the client is not logged in -->
         <a href="/account/login" title="Click to log in">My Account</a>

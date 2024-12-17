@@ -34,6 +34,7 @@ body, head, header, nav, footer{
   color: #333; 
   font-size: 25px; 
   font-weight:bold;
+  margin-left: 12px;
 }
 
 #tools a {
@@ -42,6 +43,7 @@ body, head, header, nav, footer{
   font-size: 10px; 
   text-transform: uppercase;
   font-weight: bold;
+  margin-left: 15px;
 }
 
 nav ul{
@@ -246,21 +248,11 @@ body{
   background-color: #000000;
   /* margin-top: 20px; */
 }
+
 .namePrice {
   /* Allows for positioning relative to the current position */
  font-size: 10px;
 }
-
-/* .big-container h1{
-  font-size: 20px;
-  margin-left: 47px;
-  margin-top: 15px;
-} */
-
-/* .vehicleNumbers{
-  font-size: 15px;
-  margin-top:10px;
-  } */
   
 .vehicleNumbers h2{
   margin-left: 45px;
@@ -318,7 +310,7 @@ img{
     margin-left: 45px;
     margin-top: 5px;
     font-size: 13px;
-    color: #00f2ca;
+    /* color: #00f2ca; */
    }
   
    #vehicle_description{
@@ -436,7 +428,12 @@ form div small {
 };
 
 .links{
-  display: flex;
+   
+}
+
+div.links{
+  text-align: center;
+  padding-top: 30px;
 }
 
 a.update-account {
@@ -487,13 +484,619 @@ input[type = "submit"]{
 .add-classification-form{
   margin-bottom: 20px;
 }
+
+.review{
+  padding-left: 15px;
+  margin-top: 15px;
+}
+
+.small-message{
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+/* General page styling */
+.inventory-text {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
+}
+
+/* Links section with buttons */
+.links {
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  padding: 12px 25px;
+  background-color: #4CAF50; /* Green color */
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.links a:hover {
+  background-color: #45a049; /* Slightly darker green */
+}
+
+/* Heading and paragraph styling */
+.manage-inventory {
+  font-size: 24px;
+  color: #333;
+  margin-top: 40px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+.inv-paragraph {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* General page styling */
+.inventory-text {
+  font-size: 18px;
+  color: #2e2e2e;
+  margin-bottom: 30px;
+  line-height: 1.7;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+/* Links section with buttons */
+.links {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.links a {
+  padding: 15px 30px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: inline-block;
+}
+
+/* Button hover effect */
+.links a:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading and paragraph styling */
+.manage-inventory {
+  font-size: 28px;
+  color: #333;
+  margin-top: 50px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.inv-paragraph {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 25px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* General page styling */
+.inventory-text {
+  font-size: 16px;
+  color: #2e2e2e;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+/* Links section with buttons */
+.links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.links a {
+  padding: 12px 25px;
+  background-color: #086757;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: inline-block;
+}
+
+/* Button hover effect */
+.links a:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading and paragraph styling */
+.manage-inventory {
+  font-size: 24px;
+  color: #333;
+  margin-top: 30px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.inv-paragraph {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Styling for the classification select dropdown */
+select {
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 250px;
+  margin: 10px auto;
+  display: block;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+select:focus {
+  border-color: #4CAF50;
+  outline: none;
+  background-color: #f1fdf0;
+}
+
+/* Table styling */
+#inventoryDisplay {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  font-family: 'Roboto', sans-serif;
+}
+
+#inventoryDisplay th, #inventoryDisplay td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+#inventoryDisplay th {
+  background-color: #4CAF50;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#inventoryDisplay tr:hover {
+  background-color: #f1fdf0;
+}
+
+#inventoryDisplay td {
+  font-size: 14px;
+  color: #333;
+}
+
+
+/* .inventory-text{
+  padding-left: 15px;
+  text-align: center;
+  margin-top: 20px;
+} */
+
+/* .new-classificationLink{
+  padding: 6px;
+  border-radius: 11px;
+  margin-right: 15px;
+  background-color: #086757;
+  color: white;
+  box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.1);
+} */
+/* 
+.new-inventory{
+  padding: 6px;
+  border-radius: 11px;
+  background-color: #086757;
+  color: white;
+  box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.1);
+}
+
+.manage-inventory{
+padding-left: 15px;
+margin-top: 20px;
+} */
+
+p.inv-paragraph{
+padding-left: 15px;
+
+}
+
+
+#classificationList{
+  background-color: #086757;
+  border-radius: 3px;
+  /* margin-left: 15px;
+  margin-top: 12px;
+  margin-bottom: 15px; */
+  color: white;
+  /* padding: 5px; */
+}
+
+p.copyright{
+  padding: 20px;
+}
+
+
+.logout{
+ float: right;
+ margin-right: 10px;
+ margin-top: 5px;
+}
+
+a.hello{
+  margin-left: 12px;
+}
+
+
+/* General container styling */
+.vehicleReviewsSection {
+  background-color: #f9f9f9; /* Light background */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  max-width: 800px; /* Optional: Controls width */
+  margin: 20px auto; /* Centers the section */
+  font-family: Arial, sans-serif;
+}
+
+.vehicleReviews ul {
+  list-style: none; /* Remove bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.vehicleReviews li {
+  background-color: #ffffff; /* White background for each review */
+  margin-bottom: 15px; /* Spacing between reviews */
+  padding: 15px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Spacing between elements in each review */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Reviewer information styling */
+.reviewerInfo {
+  display: flex;
+  justify-content: space-between; /* Name on left, timestamp on right */
+  align-items: center; /* Vertical alignment */
+  border-bottom: 1px solid #e1e1e1;
+  padding-bottom: 10px;
+}
+
+.reviewer-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.reviewerInfo p {
+  margin: 0;
+  color: #777; /* Subdued color for timestamp */
+  font-size: 14px;
+}
+
+/* Review content styling */
+.vehicleReviews li p {
+  margin: 0;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Message when no reviews are present */
+.vehicleReviews > p {
+  text-align: center;
+  color: #999;
+  font-size: 16px;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* Container styling */
+#reviewForm {
+  background-color: #f9f9f9; /* Light background */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  max-width: 500px; /* Controls form width */
+  margin: 20px auto; /* Center form horizontally */
+  font-family: Arial, sans-serif;
+}
+
+/* Form input field styling */
+#reviewForm form div {
+  margin-bottom: 15px; /* Spacing between input fields */
+}
+
+#reviewForm label {
+  display: block; /* Places label above input */
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+}
+
+#reviewForm input[type="text"],
+#reviewForm textarea {
+  width: 100%; /* Full-width inputs */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+#reviewForm textarea {
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Button styling */
+#reviewForm button[type="submit"] {
+  background-color: #4CAF50; /* Green button */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#reviewForm button[type="submit"]:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Focus state for inputs */
+#reviewForm input[type="text"]:focus,
+#reviewForm textarea:focus {
+  border-color: #4CAF50; /* Green border on focus */
+  outline: none; /* Removes default outline */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Soft green glow */
+}
+
+.review-here{
+  font-weight: bold;}
+
+.vehicle-reviews{
+  margin-left: 30px;
+  margin-top: 15px;
+}
+
+
+/* Account reviews section */
+.accountReviews {
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.accountReviews p {
+  margin: 5px 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.accountReviews p:first-child {
+  font-weight: bold; /* Make the car make/model bold */
+  font-size: 16px;
+}
+
+/* Styling for review content */
+.accountReviews p:nth-child(2) {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Timestamp styling */
+.accountReviews p:nth-child(3) {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Small message when no reviews are found */
+.small-message {
+  font-size: 16px;
+  color: #999;
+  text-align: center;
+  margin-top: 30px;
+  font-style: italic;
+}
+
+/* Styling for Edit and Delete actions */
+.reviewEditandDelete {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.reviewActionIcon {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.reviewActionIcon:hover {
+  color: #0056b3;
+}
+
+.reviewActionIcon:active {
+  color: #003366;
+}
+
+
+
+
+/* Form content inside a single div */
+#editReviewForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Label styling */
+#editReviewForm label {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Input and textarea styling */
+#editReviewForm input[type="text"],
+#editReviewForm textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#editReviewForm input[type="text"]:focus,
+#editReviewForm textarea:focus {
+  border-color: #4CAF50; /* Green color */
+  outline: none;
+}
+
+/* Button styling */
+#editReviewForm button {
+  padding: 12px 20px;
+  background-color: #4CAF50; /* Green button */
+  color: white;
+  border: none; /* No border */
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#editReviewForm button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+
+
+
+/* Form content inside a single div */
+#deleteReviewForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Label styling */
+#deleteReviewForm label {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Input and textarea styling (readonly fields) */
+#deleteReviewForm input[type="text"],
+#deleteReviewForm textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f1f1f1; /* Light grey for readonly fields */
+}
+
+/* Readonly input and textarea */
+#deleteReviewForm input[readonly],
+#deleteReviewForm textarea[readonly] {
+  background-color: #f1f1f1;
+  color: #888; /* Lighter color for readonly text */
+}
+
+/* Button styling (Delete button in red) */
+#deleteReviewForm button {
+  padding: 12px 20px;
+  background-color: #e74c3c; /* Red button */
+  color: white;
+  border: none; /* No border */
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#deleteReviewForm button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
 /* Large screen styles */
 @media (min-width: 700px) {
+
+ li{
+  list-style-type: none;
+ }
   .big-container{
     max-width: 70%;
     margin: 0 auto;
     background-color: white;
-    box-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+    box-shadow: 3px 6px 12px rgba(0,0,0,0.3);
     }
 
   body{
@@ -619,10 +1222,10 @@ margin-left: 45px;
 /* Form styles */
 
 h2.welcome{
-  font-size: 20px;
+  font-size: 17px;
   padding-top:10px;
   padding-left: 15px;
- 
+  margin-bottom: 5px;
 };
 
 

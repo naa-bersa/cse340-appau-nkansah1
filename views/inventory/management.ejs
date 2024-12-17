@@ -6,15 +6,15 @@
 
 <h1>Inventory Management</h1>
 
-<p>This page allows you to manage all things related to inventory. You can add new classifications or inventory items using the links below:</p>
+<p class="inventory-text">This page allows you to manage all things related to inventory. You can add new classifications or inventory items using the links below</p>
 
 <div class="links">
-    <a href="/inv/add-classification" class="btn">Add New Classification</a>
-    <a href="/inv/add-inventory" class="btn">Add New Inventory Item</a>
+    <a class="new-classificationLink" href="/inv/add-classification" class="btn">Add New Classification</a>
+    <a class="new-inventory" href="/inv/add-inventory" class="btn">Add New Inventory Item</a>
 </div>
 
-<h2>Manage Inventory</h2>
-<p>Select a classification to see those inventory items.</p>
+<h2 class="manage-inventory">Manage Inventory</h2>
+<p class="inv-paragraph">Select a classification to see those inventory items.</p>
 <%- classificationSelect %>
 
 <!-- Empty table where inventory items will be displayed -->

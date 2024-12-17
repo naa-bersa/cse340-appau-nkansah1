@@ -30,8 +30,9 @@
     </p>
   <% } %>
    
-  <h3>Reviews</h3>
+  
   <div>
+    <h3 class="review">Reviews</h3>
     <% if (accountReviews.length > 0) { %>
       <% accountReviews.forEach((review) => { %>
         <div class="accountReviews">
@@ -45,6 +46,6 @@
     </div>
       <% }) %>
     <% } else { %>
-      <p>this account hasn't reviews any cars yet</p>
+      <p class="small-message">This account doesn't have reviews on any cars yet</p>
     <% } %>
   </div>
